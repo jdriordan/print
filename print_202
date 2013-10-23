@@ -1,2 +1,7 @@
-#!/bin/bash
-ssh atom@143.239.221.57 "lpr -o sides=two-sided-long-edge" < $1 
+#! /bin/bash
+if [[ $1 = http://arxiv.org/pdf/*.pdf ]];
+        then
+                wget $1 --user-agent=Lynx -q --output-document=- | ssh atom@143.239.221.57 lpr -o sides=two-sided-long-edge
+        else
+                ssh atom@143.239.221.57 "lpr -o sides=two-sided-long-edge" < $1
+        fi

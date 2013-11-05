@@ -6,5 +6,5 @@ if [[ $1 = http://arxiv.org/pdf/*.pdf ]]
     then
         wget $1 --user-agent=Lynx -q --output-document=- | $LPR
     else
-        $LPR < $1
+        $LPR < "$1"
     fi

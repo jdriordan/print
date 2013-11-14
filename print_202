@@ -1,9 +1,5 @@
 #! /bin/bash
 
-LPR="lpr -o sides=two-sided-long-edge"
-SSH="ssh atom@143.239.221.57"
-CMD=""
-
 arxiv=()
 files=()
 for file; do
@@ -14,16 +10,17 @@ for file; do
     fi
 done
 
+LPR="lpr -o sides=two-sided-long-edge"
+SSH="ssh atom@143.239.221.57"
+
 if [ ${#arxiv[@]} -gt 0 ]; then
-    TMP="wget "${arxiv[@]}" --user-agent=Lynx -q --output-document=- | "$LPR";"
-    CMD="$CMD $TMP" 
+    GET="wget "${arxiv[@]}" --user-agent=Lynx -q --output-document=- | "$LPR""
+    CMD="$SSH $GET" 
+    $CMD
 fi
 
 if [ ${#files[@]} -gt 0 ]; then
-    TMP=""$LPR" < "${files[@]}";"
-    CMD="$CMD $TMP"
+    CMD="$SSH $LPR"
+    $CMD < "${files[@]}"
 fi
 
-"$SSH" << EOF
-    "$CMD"
-EOF

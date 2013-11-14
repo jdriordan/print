@@ -11,16 +11,13 @@ for file; do
 done
 
 LPR="lpr -o sides=two-sided-long-edge"
+GET="wget --user-agent=Lynx -q --output-document=-"
 SSH="ssh atom@143.239.221.57"
 
 if [ ${#arxiv[@]} -gt 0 ]; then
-    GET="wget "${arxiv[@]}" --user-agent=Lynx -q --output-document=- | "$LPR""
-    CMD="$SSH $GET" 
-    $CMD
+    $GET "${arxiv[@]}" | $SSH $LPR
 fi
 
 if [ ${#files[@]} -gt 0 ]; then
-    CMD="$SSH $LPR"
-    $CMD < "${files[@]}"
+    $SSH $LPR < "${files[@]}"
 fi
-

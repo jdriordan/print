@@ -12,5 +12,10 @@ for file; do
     fi
 done
 
-wget "$arxiv" --user-agent=Lynx -q --output-document=- | $LPR
-$LPR < "$files"
+if [ ${#arxiv[@]} -gt 0 ]; then
+    wget "${arxiv[@]}" --user-agent=Lynx -q --output-document=- | $LPR
+fi
+
+if [ ${#files[@]} -gt 0 ]; then
+    $LPR < "${files[@]}"
+fi

@@ -18,11 +18,9 @@ if [ ${#arxiv[@]} -gt 0 ]; then
     $GET "${arxiv[@]}" | $SSH $LPR
 fi
 
-#if [ ${#files[@]} -gt 0 ]; then
-#    $SSH $LPR < "${files[@]}"
-#fi
-
-# BAD! ssh for each file...
-for file in "${files[@]}"; do
-    $SSH $LPR < "$file" 
-done
+if [ ${#files[@]} -gt 0 ]; then
+    # BAD! ssh for each file...
+    for file in "${files[@]}"; do
+        $SSH $LPR < "$file" 
+    done
+fi

@@ -1,4 +1,4 @@
-Print 202
+Print
 =====
 
 Usage
@@ -9,6 +9,8 @@ To print local files just give the name, for arXiv files link to the pdf
 Example:
 
 	$ ./printfile foo.pdf http://arxiv.org/pdf/XXXX.XXXX.vX.pdf bar.pdf
+
+Note: Reads user@hostname from a file called "printer".
 
 Authenitcation
 -------------
@@ -28,7 +30,7 @@ Bam, the server will no longer ask you for the password for ssh.
 TODO
 ----
 
-[ ] Stop hardcoding the server and login
+[x] Stop hardcoding the server and login
 
 [ ] Check multiple files work
 

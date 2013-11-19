@@ -12,14 +12,15 @@ done
 
 LPR="lpr -o sides=two-sided-long-edge"
 GET="wget --user-agent=Lynx -q --output-document=-"
-SSH="ssh atom@143.239.221.57"
+SSH="ssh $(head -n 1 printer)"
 
 if [ ${#arxiv[@]} -gt 0 ]; then
-    $GET "${arxiv[@]}" | $SSH $LPR
+    for file in "${arxiv[@]}"; do
+        $GET "$file" | $SSH $LPR
+    done 
 fi
 
 if [ ${#files[@]} -gt 0 ]; then
-    # BAD! ssh for each file...
     for file in "${files[@]}"; do
         $SSH $LPR < "$file" 
     done

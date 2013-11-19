@@ -2,11 +2,11 @@
 
 arxiv=()
 files=()
-for file; do
+for filename; do
     if [[ $file = http://arxiv.org/pdf/*.pdf ]]; then
-        arxiv+=("$file")
+        arxiv+=("$filename")
     else
-        files+=("$file")
+        files+=("$filename")
     fi
 done
 

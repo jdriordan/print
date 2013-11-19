@@ -1,10 +1,27 @@
 #! /bin/bash
 
-LPR="ssh atom@143.239.221.57 lpr -o sides=two-sided-long-edge"
-
-if [[ $1 = http://arxiv.org/pdf/*.pdf ]]
-    then
-        wget $1 --user-agent=Lynx -q --output-document=- | $LPR
+arxiv=()
+files=()
+for file; do
+    if [[ $file = http://arxiv.org/pdf/*.pdf ]]; then
+        arxiv+=("$file")
     else
-        $LPR < "$1"
+        files+=("$file")
     fi
+done
+
+LPR="lpr -o sides=two-sided-long-edge"
+GET="wget --user-agent=Lynx -q --output-document=-"
+SSH="ssh $(head -n 1 printer)"
+
+if [ ${#arxiv[@]} -gt 0 ]; then
+    for file in "${arxiv[@]}"; do
+        $GET "$file" | $SSH $LPR
+    done 
+fi
+
+if [ ${#files[@]} -gt 0 ]; then
+    for file in "${files[@]}"; do
+        $SSH $LPR < "$file" 
+    done
+fi

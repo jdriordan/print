@@ -23,13 +23,17 @@ In order not to have to enter a password every time do as follows,
 
 	$ ssh ssh-copy-id atom@143.239.221.57
 
-Bam, the server will no longer ask you for the password for ssh. 
+Bam, the server will no longer ask you for the password for ssh.
 
 TODO
 ----
 
-- [ ] Stop hardcoding the server and login
-- [ ] Check multiple files work
-- [ ] Make only one ssh connection per session
-- [ ] Have the script read and summarise the paper in an understandable manner
-- [x] At least print single things
+[ ] Stop hardcoding the server and login
+
+[ ] Check multiple files work
+
+[ ] Make only one ssh connection per session
+
+[ ] Have the script read and summarise the paper in an understandable manner
+
+[x] At least print single things

@@ -12,7 +12,8 @@ done
 
 LPR="lpr -o sides=two-sided-long-edge"
 GET="wget --user-agent=Lynx -q --output-document=-"
-SSH="ssh $(head -n 1 printer)"
+DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/"
+SSH="ssh $(head -n 1 "$DIR"printer)"
 
 if [ ${#arxiv[@]} -gt 0 ]; then
     for file in "${arxiv[@]}"; do

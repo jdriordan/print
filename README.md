@@ -10,7 +10,7 @@ Example:
 
 	$ ./printfile foo.pdf http://arxiv.org/pdf/XXXX.XXXX.vX.pdf bar.pdf
 
-Note: Reads user@hostname from a file called "printer".
+Note: Reads user@hostname from a file "printer", in same directory as printfile.
 
 Authenitcation
 -------------

@@ -1,0 +1,29 @@
+#! /bin/bash
+
+arxiv=()
+files=()
+for file; do
+    if [[ $file = http://arxiv.org/pdf/*.pdf ]]; then
+        arxiv+=("$file")
+    else
+        files+=("$file")
+    fi
+done
+
+LPR="lpr -o sides=two-sided-long-edge"
+GET="wget --user-agent=Lynx -q --output-document=-"
+DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/"
+SSH="ssh $(head -n 1 "$DIR"printer)"
+
+if [ ${#arxiv[@]} -gt 0 ]; then
+    for file in "${arxiv[@]}"; do
+        $GET "$file" | $SSH $LPR
+    done 
+fi
+
+if [ ${#files[@]} -gt 0 ]; then
+    for file in "${files[@]}"; do
+        $SSH $LPR < "$file" 
+    done
+fi
+

@@ -28,12 +28,8 @@ Bam, the server will no longer ask you for the password for ssh.
 TODO
 ----
 
-[ ] Stop hardcoding the server and login
-
-[ ] Check multiple files work
-
-[ ] Make only one ssh connection per session
-
-[ ] Have the script read and summarise the paper in an understandable manner
-
-[x] At least print single things
+- [x] Stop hardcoding the server and login
+- [ ] Check multiple files work
+- [ ] Make only one ssh connection per session
+- [ ] Have the script read and summarise the paper in an understandable manner
+- [x] At least print single things

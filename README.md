@@ -8,20 +8,20 @@ To print local files just give the name, for arXiv files link to the pdf
 
 Example:
 
-	$ ./printfile foo.pdf http://arxiv.org/pdf/XXXX.XXXX.vX.pdf bar.pdf
+    $ ./printfile foo.pdf http://arxiv.org/pdf/XXXX.XXXX.vX.pdf bar.pdf
 
 Authenitcation
 -------------
 
 In order not to have to enter a password every time do as follows,
 
-1. Generate an ssh key if you don't already have one:
+First generate an ssh key if you don't already have one:
 
-	$ ssh-keygen
+    $ ssh-keygen
 
-2. Copy the key to the server:
+Then copy the key to the server:
 
-	$ ssh ssh-copy-id $(head -n 1 ./printer)
+    $ ssh ssh-copy-id $(head -n 1 ./printer)
 
 Bam, the server will no longer ask you for the password for ssh.
 
